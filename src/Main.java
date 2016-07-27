@@ -8,6 +8,7 @@ public class Main {
 		xmlcsver.setDelimiter(';');
 		xmlcsver.setLineElement("Satz");
 		xmlcsver.addOutputCSVField("WAREN_NOM_ID");
+		xmlcsver.addOutputCSVField("WAREN_NOM_SUFFIX");
 		xmlcsver.addOutputCSVField("LANG_BESCHR");
 		xmlcsver.startParse();
 		
