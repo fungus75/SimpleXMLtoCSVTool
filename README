@@ -1,0 +1,37 @@
+Sample XML: 
+
+  <T40010 xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance">
+ 	<Satz>
+ 	 <WAREN_NOM_BESCHR_SID>30963</WAREN_NOM_BESCHR_SID>
+ 	 <WAREN_NOM_SID>27623</WAREN_NOM_SID>
+ 	 <DAT_START>1971-12-31T00:00:00</DAT_START>
+ 	 <DAT_END>4000-01-01T00:00:00</DAT_END>
+ 	 <WAREN_NOM_ID>0100000000</WAREN_NOM_ID>
+ 	 <WAREN_NOM_SUFFIX>80</WAREN_NOM_SUFFIX>
+ 	 <LANG_BESCHR>LEBENDE TIERE</LANG_BESCHR>
+ 	 <AEND_ART>i</AEND_ART>
+ 	</Satz>
+ 	<Satz>
+ 	 <WAREN_NOM_BESCHR_SID>30964</WAREN_NOM_BESCHR_SID>
+ 	 <WAREN_NOM_SID>27624</WAREN_NOM_SID>
+ 	 <DAT_START>1972-01-01T00:00:00</DAT_START>
+ 	 <DAT_END>4000-01-01T00:00:00</DAT_END>
+ 	 <WAREN_NOM_ID>0101000000</WAREN_NOM_ID>
+ 	 <WAREN_NOM_SUFFIX>80</WAREN_NOM_SUFFIX>
+ 	 <LANG_BESCHR>Pferde, Esel, Maultiere und Maulesel, lebend</LANG_BESCHR>
+ 	 <AEND_ART>i</AEND_ART>
+ 	</Satz>
+  </T40010>
+  
+
+
+In this XML the "<Satz>" is the Line-Segment, and we assume that we want to have WAREN_NOM_SID and LANG_BESCHR in the output
+so we use XMLCSVer that way:
+ 		XMLCSVer xmlcsver = new XMLCSVer();
+ 		xmlcsver.setXMLFile("g:/services/IT/Gruppen/eBusiness/TeamEAI/XX_Schnittstellendoku/Grunddatenbestand/XD00997901_T40010_63.xml");
+ 		xmlcsver.setCSVFile("g:/services/IT/Gruppen/eBusiness/TeamEAI/XX_Schnittstellendoku/Grunddatenbestand/XD00997901_T40010_63.csv");
+ 		xmlcsver.setDelimiter(';');
+ 		xmlcsver.setLineElement("Satz");
+ 		xmlcsver.addOutputCSVField("WAREN_NOM_ID");
+ 		xmlcsver.addOutputCSVField("LANG_BESCHR");
+ 		xmlcsver.startParse();
